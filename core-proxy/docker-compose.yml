@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nginx:
     image: nginx:alpine
@@ -34,5 +32,4 @@ services:
 
 networks:
   gis_network:
-    name: gis_network
-    driver: bridge
+    external: true

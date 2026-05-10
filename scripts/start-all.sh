@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check for Docker permission
+if ! docker info >/dev/null 2>&1; then
+    echo "Error: Cannot connect to Docker daemon. Try running with 'sudo' or add your user to the 'docker' group."
+    exit 1
+fi
+
 # Ensure external network exists
 docker network create gis_network 2>/dev/null || true
 

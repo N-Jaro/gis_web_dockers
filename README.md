@@ -20,6 +20,10 @@ Ensure Docker and Git are installed on your server:
 sudo apt update
 sudo apt install -y docker.io docker-compose git
 sudo systemctl enable --now docker
+
+# Add your user to the docker group (to avoid permission denied)
+sudo usermod -aG docker $USER
+# IMPORTANT: Log out and log back in after this!
 ```
 
 ### 2. Clone the Repository
