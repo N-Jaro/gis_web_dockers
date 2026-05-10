@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  gis_wp:
+    image: wordpress:php8.3-fpm-alpine
+    container_name: gis_wp_app
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: gis_db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${GIS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./data/wp-content:/var/www/html/wp-content # Data is stored locally in the app folder
+    networks:
+      - gis_network
+    depends_on:
+      - gis_db
+
+  gis_db:
+    image: mariadb:11.4
+    container_name: gis_wp_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: ${GIS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${GIS_DB_ROOT_PASSWORD}
+    volumes:
+      - ./data/db:/var/lib/mysql # Database is stored locally in the app folder
+    networks:
+      - gis_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  gis_network:
+    external: true
