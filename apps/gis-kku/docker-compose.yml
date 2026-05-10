@@ -1,6 +1,6 @@
 services:
   gis_wp:
-    image: wordpress:php8.3-fpm-alpine
+    image: wordpress:php8.3-apache
     container_name: gis_wp_app
     restart: unless-stopped
     environment:
