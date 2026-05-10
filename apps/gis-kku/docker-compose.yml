@@ -12,6 +12,7 @@ services:
         define('FS_METHOD', 'direct');
     volumes:
       - ./data/wp-content:/var/www/html/wp-content
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - gis_network
     depends_on:
