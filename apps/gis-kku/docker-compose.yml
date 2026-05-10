@@ -11,7 +11,7 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD', 'direct');
     volumes:
-      - ./data/wp-content:/var/www/html/wp-content
+      - ./data/html:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - gis_network
