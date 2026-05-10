@@ -9,6 +9,35 @@ This repository uses a **Multi-Compose Architecture**. Each service (Proxy, Apps
 
 ---
 
+## 🖥️ Server Setup (Any Linux Server)
+
+Follow these steps to prepare any fresh server for this infrastructure.
+
+### 1. Install Prerequisites
+Ensure Docker and Git are installed on your server:
+```bash
+# Ubuntu/Debian example
+sudo apt update
+sudo apt install -y docker.io docker-compose git
+sudo systemctl enable --now docker
+```
+
+### 2. Clone the Repository
+```bash
+git clone <your-repo-url> /var/www/gis_web_dockers
+cd /var/www/gis_web_dockers
+```
+
+### 3. Configure Firewall
+Ensure ports 80 (HTTP) and 443 (HTTPS) are open to the public:
+```bash
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw reload
+```
+
+---
+
 ## 🚀 Quick Start (Deployment)
 
 ### 1. Initialize the Infrastructure
