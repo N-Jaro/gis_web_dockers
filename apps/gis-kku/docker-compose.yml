@@ -9,7 +9,12 @@ services:
       WORDPRESS_DB_PASSWORD: ${GIS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_CONFIG_EXTRA: |
+        define('FORCE_SSL_ADMIN', true);
         define('FS_METHOD', 'direct');
+
+        /* Force HTTPS URLs */
+        define('WP_HOME', 'https://10.198.110.46');
+        define('WP_SITEURL', 'https://10.198.110.46');
         /* Enable HTTPS detection behind proxy */
         if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
             $_SERVER['HTTPS'] = 'on';
