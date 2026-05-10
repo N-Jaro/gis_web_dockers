@@ -23,9 +23,10 @@ sudo systemctl enable --now docker
 ```
 
 ### 2. Clone the Repository
+Clone the repository into your home directory (or any folder you have permission to write to):
 ```bash
-git clone <your-repo-url> /var/www/gis_web_dockers
-cd /var/www/gis_web_dockers
+git clone <your-repo-url> ~/gis_web_dockers
+cd ~/gis_web_dockers
 ```
 
 ### 3. Configure Firewall
