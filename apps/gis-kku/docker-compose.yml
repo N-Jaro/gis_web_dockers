@@ -8,16 +8,6 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: ${GIS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_CONFIG_EXTRA: |
-        define('FORCE_SSL_ADMIN', true);
-        define('FS_METHOD', 'direct');
-
-        /* Force HTTPS URLs */
-        define('WP_HOME', 'https://10.198.110.46');
-        define('WP_SITEURL', 'https://10.198.110.46');
-        /* Force HTTPS detection */
-        $_SERVER['HTTPS'] = 'on';
-        $_SERVER['SERVER_PORT'] = 443;
 
     volumes:
       - ./data/html:/var/www/html
@@ -41,7 +31,7 @@ services:
     networks:
       - gis_network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 10s
       timeout: 5s
       retries: 5
