@@ -1,4 +1,7 @@
 #!/bin/bash
+# Navigate to the project root relative to this script
+cd "$(dirname "$0")/.."
+
 
 # Check for Docker permission
 if ! docker info >/dev/null 2>&1; then

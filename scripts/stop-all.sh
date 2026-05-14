@@ -1,4 +1,7 @@
 #!/bin/bash
+# Navigate to the project root relative to this script
+cd "$(dirname "$0")/.."
+
 
 echo "--- Stopping Applications ---"
 for dir in apps/*/ ; do
