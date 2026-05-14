@@ -1,4 +1,7 @@
 #!/bin/bash
+# Navigate to the core-proxy directory relative to this script
+cd "$(dirname "$0")/../core-proxy"
+
 
 # Check if domain is provided
 if [ -z "$1" ]; then
